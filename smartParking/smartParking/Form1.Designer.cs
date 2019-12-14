@@ -1,4 +1,4 @@
-﻿namespace smartParking
+﻿namespace SmartParking
 {
     partial class Form1
     {

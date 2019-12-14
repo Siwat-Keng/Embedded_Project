@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28822.285
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartParking", "smartParking\SmartParking.csproj", "{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartParking", "SmartParking\SmartParking.csproj", "{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BA096F61-EB56-43EC-8B4D-5E3B91C8B31A}
+		SolutionGuid = {4A65B507-6969-4A2F-9A12-56622FC5E0E8}
 	EndGlobalSection
 EndGlobal

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9D806B6-2B80-4DD4-A072-8FCD2EEB1B3D}</ProjectGuid>
+    <ProjectGuid>{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>smartParking</RootNamespace>
-    <AssemblyName>smartParking</AssemblyName>
+    <RootNamespace>SmartParking</RootNamespace>
+    <AssemblyName>SmartParking</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarButton.cs">
+    <Compile Include="Carbutton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CarButton.Designer.cs">
-      <DependentUpon>CarButton.cs</DependentUpon>
+    <Compile Include="Carbutton.Designer.cs">
+      <DependentUpon>Carbutton.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -60,8 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CarButton.resx">
-      <DependentUpon>CarButton.cs</DependentUpon>
+    <EmbeddedResource Include="Carbutton.resx">
+      <DependentUpon>Carbutton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

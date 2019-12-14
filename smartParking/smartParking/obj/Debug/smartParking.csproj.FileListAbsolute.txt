@@ -1,0 +1,10 @@
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\bin\Debug\SmartParking.exe.config
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\bin\Debug\SmartParking.exe
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\bin\Debug\SmartParking.pdb
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.Carbutton.resources
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.Properties.Resources.resources
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.csproj.GenerateResource.cache
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.csproj.CoreCompileInputs.cache
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.exe
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.pdb
+C:\Users\ohmkunz\Desktop\Embedded_Project\SmartParking\SmartParking\obj\Debug\SmartParking.Form1.resources
