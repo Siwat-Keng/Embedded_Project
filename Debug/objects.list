@@ -33,5 +33,4 @@
 "Src/system_stm32f4xx.o"
 "Src/usb_host.o"
 "Src/usbh_conf.o"
-"Src/usbh_platform.o"
 "Startup/startup_stm32f407vgtx.o"
