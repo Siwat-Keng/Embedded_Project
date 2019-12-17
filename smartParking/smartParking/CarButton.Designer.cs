@@ -38,7 +38,7 @@
             this.car.Name = "car";
             this.car.Size = new System.Drawing.Size(75, 23);
             this.car.TabIndex = 0;
-            this.car.Text = "carButton";
+            this.car.Text = " ";
             this.car.UseVisualStyleBackColor = false;
             this.car.Click += new System.EventHandler(this.Car_Click);
             this.ResumeLayout(false);
