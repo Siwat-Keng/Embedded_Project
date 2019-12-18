@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SmartParking
@@ -21,8 +22,9 @@ namespace SmartParking
 
         private Color parked = ColorTranslator.FromHtml("#fa7878");//before#F96363
         private Color foreParked = ColorTranslator.FromHtml("#F90000");
-        
-        
+
+        private Boolean counting = false;
+        private int waitsec;
         public Park()
         {
             InitializeComponent();
@@ -64,12 +66,14 @@ namespace SmartParking
 
         public void SetWaitState()
         {
+            waitTimer.Start();
             Wait();
 
         }
 
         public void SetParkState()
         {
+            //MessageBox.Show("Park.setParkstate");
             if (this.state == "wait")
             {
                 Parked();
@@ -77,9 +81,18 @@ namespace SmartParking
             }
             else if (this.state == "ready")
             {
-                StartBeep();
+                
+                Thread thread = new Thread(() => {
+                    this.BeginInvoke((Action)delegate () {
+                        StartBeep();
+                    });
+                });
+                thread.Start();
+                MessageBox.Show("Park No."+this.GetParkNumber() + " " + "is Parked on ready state");
+
                 //BeepSound();//WrongState ต้องแก้เป้น while true รับสถานะที่จอดรถเรื่อยๆ ถ้ารถออกไปแล้วค่อยหยุด
             }
+            
 
         }
 
@@ -87,6 +100,8 @@ namespace SmartParking
         {
             Ready();
             this.timeCounter.StopCounting();
+            this.counting = false;
+
         }
 
         private void BeepSound()
@@ -95,12 +110,15 @@ namespace SmartParking
             {
                 Console.Beep(1000, 500);
             }*/
-            //Console.Beep(1000, 5000);
-            MessageBox.Show("Wrong");
+            Console.Beep(300, 3000);
+            //MessageBox.Show("Wrong");
         }
         public void StartCounting()
         {
+            if (!counting) {
+                counting = true;
             this.timeCounter.StartCounting();
+            }
         }
 
         public void SpeedUp()
@@ -132,13 +150,35 @@ namespace SmartParking
         }
         private void StartBeep()
         {
-            //beepCounter.Start();
-            BeepSound();
+            beepCounter.Start();
+            //BeepSound();
         }
         private void BeepCounter_Tick(object sender, EventArgs e)
         {
             BeepSound();
             beepCounter.Stop();
+        }
+
+        private void WaitTimer_Tick(object sender, EventArgs e)
+        {
+            waitsec++;
+            /*
+            if (waitsec == 10)
+            {
+                waitTimer.Stop();
+                waitsec = 0;
+                Ready();
+            }*/
+           
+        }
+        public string GetTime()
+        {
+            return this.timeCounter.GetTime();
+        }
+
+        public string GetPrice()
+        {
+            return this.timeCounter.TimePricing().ToString();
         }
     }
 }

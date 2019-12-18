@@ -43,6 +43,7 @@
             this.parkTime.TabIndex = 0;
             this.parkTime.Text = "00:00:00";
             this.parkTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.parkTime.Click += new System.EventHandler(this.ParkTime_Click);
             // 
             // price
             // 

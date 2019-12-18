@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.carPark = new System.Windows.Forms.Button();
             this.beepCounter = new System.Windows.Forms.Timer(this.components);
+            this.waitTimer = new System.Windows.Forms.Timer(this.components);
             this.timeCounter = new SmartParking.TimeCounter();
             this.SuspendLayout();
             // 
@@ -48,8 +49,13 @@
             // 
             // beepCounter
             // 
-            this.beepCounter.Interval = 5000;
+            this.beepCounter.Interval = 1000;
             this.beepCounter.Tick += new System.EventHandler(this.BeepCounter_Tick);
+            // 
+            // waitTimer
+            // 
+            this.waitTimer.Interval = 1000;
+            this.waitTimer.Tick += new System.EventHandler(this.WaitTimer_Tick);
             // 
             // timeCounter
             // 
@@ -75,5 +81,6 @@
         private TimeCounter timeCounter;
         private System.Windows.Forms.Button carPark;
         private System.Windows.Forms.Timer beepCounter;
+        private System.Windows.Forms.Timer waitTimer;
     }
 }

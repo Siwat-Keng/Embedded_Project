@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SmartParking
 {
@@ -16,19 +17,44 @@ namespace SmartParking
         private int mm = 0;
         private int ss = 0;
         private double rate = 1.0;
+        private Boolean counting = false;
         public TimeCounter()
         {
             InitializeComponent();
         }
         public void StartCounting()
         {
-            timer.Start();
+            
+            
+            //timer.Start();
+           
+
+            
+            Thread thread = new Thread(() => {
+                this.BeginInvoke((Action)delegate () {
+                    timer.Start();
+                });
+            });
+            thread.Start();
+             
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            SecIncrement();
+            
+                counting = true;
+                //MessageBox.Show("a");
+                SecIncrement();
+            /* if (parkTime.InvokeRequired)
+             {
+                 parkTime.Invoke(new MethodInvoker(delegate { parkTime.Text = TimeString(); }));
+             }*/
             this.parkTime.Text = TimeString();
-            this.price.Text = "Price : "+ TimePricing();
+            //MessageBox.Show(parkTime.Text);
+            //this.parkTime.Text = "1";
+            //MessageBox.Show(TimeString());
+
+            this.price.Text = "Price : " + TimePricing();
+            
         }
         private void SecIncrement()
         {
@@ -56,15 +82,17 @@ namespace SmartParking
 
         private string TimeString()
         {
+            
             string hour = hh < 10 ? "0" + hh : hh.ToString();
             string minute = mm < 10 ? "0" + mm : mm.ToString();
             string second = ss < 10 ? "0" + ss : ss.ToString();
             return hour + ":" + minute + ":" + second;
+            //return second;
         }
         public void SpeedUp() //ลด Interval
         {
             //this.timer.Interval = (int)Math.Ceiling((double)this.timer.Interval/2) ;
-            
+            //this.timer.Interval -= 50;
             this.timer.Interval = Math.Max(this.timer.Interval - 250, 250);
             //this.rate = (2000.0 - (double)this.timer.Interval) / 1000.0;
             this.rate = 1000.0/(double)this.timer.Interval;
@@ -73,7 +101,7 @@ namespace SmartParking
         }
         public void SlowDown() //เพิ่ม Interval
         {
-            
+            //this.timer.Interval *= 2;
             this.timer.Interval = Math.Min(this.timer.Interval + 250, 2750);
             //this.rate = (2000.0 - (double)this.timer.Interval) / 1000.0;
             this.rate = 1000.0 / (double)this.timer.Interval;
@@ -86,7 +114,7 @@ namespace SmartParking
             return this.rate;
         }
 
-        private double TimePricing() // จะคิดเงินลูกค้าอย่างไร
+        public double TimePricing() // จะคิดเงินลูกค้าอย่างไร
         {
             TimeSpan timeSpan = TimeSpan.Parse(parkTime.Text);
             double totalMinute = timeSpan.TotalMinutes;
@@ -97,9 +125,19 @@ namespace SmartParking
         public void StopCounting()
         {
             this.timer.Stop();
+            counting = false;
+            hh = mm = ss = 0;
             this.parkTime.Text = "00:00:00";
+            this.price.Text = "Price : 0";
         }
 
-        
+        private void ParkTime_Click(object sender, EventArgs e)
+        {
+
+        }
+        public string GetTime()
+        {
+            return this.parkTime.Text;
+        }
     }
 }
