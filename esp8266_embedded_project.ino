@@ -1,5 +1,6 @@
 #include <MicroGear.h>
 #include <ESP8266WiFi.h>
+#include <SoftwareSerial.h>
 
 const char* ssid     = "Keng";
 const char* password = "Kengfreewifi";
@@ -9,22 +10,26 @@ const char* password = "Kengfreewifi";
 #define SECRET  "11Oa3xUQHWNiiMJAyTCvmapLc"
 
 #define ALIAS   "NodeMCU1"
-#define Target "APP"
+#define Target "VisualStudio"
 
-#define D6 12   // slot 1
-#define D7 13   // slot 2
+#define RX 12   // slot 1
+#define TX 13   // slot 2
 
 WiFiClient client;
 MicroGear microgear(client);
 
 uint32_t timer;
-char msg[2];
+char msgOut[2];
+char msgIn[2];
+char* temp;
+SoftwareSerial chat(RX, TX);
 
 void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) 
 {
-    Serial.print("Incoming message --> ");
     msg[msglen] = '\0';
-    Serial.println((char *)msg);
+    temp = (char*) msg;
+    Serial.println(temp);
+    chat.write(temp);
 }
 
 void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) 
@@ -37,8 +42,13 @@ void setup() {
      /* Event listener */
     microgear.on(MESSAGE,onMsghandler);
     microgear.on(CONNECTED,onConnected);
-
+    
+    pinMode(RX, INPUT);
+    pinMode(TX, OUTPUT);
+    
     Serial.begin(115200);
+    chat.begin(115200);
+    
     Serial.println("Starting...");
 
     WiFi.begin(ssid, password);
@@ -54,21 +64,26 @@ void setup() {
 
     microgear.init(KEY,SECRET,ALIAS);
     microgear.connect(APPID);
+    
 }
 
 void loop() {
+  
+    if (chat.available() >= 2){
+       msgOut[0] = chat.read();
+       msgOut[1] = chat.read();
+    }
+    
     if (microgear.connected())
     {
        microgear.loop();
        
        if (timer >= 1000){
-          msg[0] = digitalRead(D6) + '0';
-          msg[1] = digitalRead(D7) + '0';
-          Serial.println(msg);
-          microgear.chat(Target , msg);
+          Serial.println(msgOut);
+          microgear.chat(Target , msgOut);
           timer = 0;
        }
-       else timer += 100;
+       else timer += 10;
     }
     else{
        Serial.println("connection lost, reconnect...");  
@@ -76,7 +91,7 @@ void loop() {
           microgear.connect(APPID);
           timer = 0;   
        }
-       else timer += 100;
+       else timer += 10;
     }
-    delay(100);
+    delay(10);
 }
