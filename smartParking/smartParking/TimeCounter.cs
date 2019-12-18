@@ -18,18 +18,19 @@ namespace SmartParking
         private int ss = 0;
         private double rate = 1.0;
         private Boolean counting = false;
+        Thread thread;
         public TimeCounter()
         {
             InitializeComponent();
         }
         public void StartCounting()
         {
-            
-            
-            //timer.Start();
-           
 
-            
+
+            //timer.Start();
+
+
+
             Thread thread = new Thread(() => {
                 this.BeginInvoke((Action)delegate () {
                     timer.Start();
@@ -124,11 +125,20 @@ namespace SmartParking
         
         public void StopCounting()
         {
-            this.timer.Stop();
-            counting = false;
+
+            //this.timer.Stop();
+            Thread thread = new Thread(() => {
+                this.BeginInvoke((Action)delegate () {
+                    this.timer.Stop();
+                });
+            });
+            thread.Start();
+            
+            
+            /*counting = false;
             hh = mm = ss = 0;
             this.parkTime.Text = "00:00:00";
-            this.price.Text = "Price : 0";
+            this.price.Text = "Price : 0";*/
         }
 
         private void ParkTime_Click(object sender, EventArgs e)
@@ -138,6 +148,18 @@ namespace SmartParking
         public string GetTime()
         {
             return this.parkTime.Text;
+        }
+        public void reset()
+        {
+            Thread thread1 = new Thread(() => {
+                this.BeginInvoke((Action)delegate () {
+                    counting = false;
+                    hh = mm = ss = 0;
+                    this.parkTime.Text = "00:00:00";
+                    this.price.Text = "Price : 0";
+                });
+            });
+            thread1.Start();
         }
     }
 }

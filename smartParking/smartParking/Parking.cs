@@ -287,15 +287,19 @@ namespace SmartParking
                 {
                     ParkList[i].SetParkState();
                 }
-                else
+                else if (parkstate[i] == '0')
                 {
-                    if (ParkList[i].getState() != "wait")
+                    if (ParkList[i].getState() == "parked")
                     {
-                        ParkList[i].SetReadyState();
+                        ParkList[i].SetWaitState();
+                        ParkList[i].StopCounting();
                     }
                 }
             }
-            
+            /*if (ParkList[i].getState() != "wait")
+                    {
+                        ParkList[i].SetReadyState();
+                    }*/
 
         }
         private void Parking_MouseClick(object sender, MouseEventArgs e)
@@ -339,9 +343,9 @@ namespace SmartParking
                     //microgear.Chat(Target, park.GetParkNumber());
                     /*string binary = Convert.ToString(Convert.ToInt32(park.GetParkNumber()), 2);
                     microgear.Chat(Target, binary);*/
-                    //MessageBox.Show(binary);
-                    
-                    if (park.GetParkNumber() == "1")
+            //MessageBox.Show(binary);
+
+            if (park.GetParkNumber() == "1")
                     {
                         //MessageBox.Show("10");
                         microgear.Chat(Target, "10");
@@ -373,7 +377,7 @@ namespace SmartParking
             
             foreach (var park in ParkList)
             {
-                if (park.GetParkNumber() == outNo.Text.ToString() && park.getState() !="ready")
+                if (park.GetParkNumber() == outNo.Text.ToString() && park.getState() =="wait") //park.getState() !="ready"
                 {
                     price = park.GetPrice();
                     time = park.GetTime();

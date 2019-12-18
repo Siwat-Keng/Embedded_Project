@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.park12 = new SmartParking.Park();
             this.park11 = new SmartParking.Park();
             this.park10 = new SmartParking.Park();
@@ -121,7 +122,7 @@
             // 
             // carParkBtn
             // 
-            this.carParkBtn.Location = new System.Drawing.Point(176, 54);
+            this.carParkBtn.Location = new System.Drawing.Point(176, 19);
             this.carParkBtn.Name = "carParkBtn";
             this.carParkBtn.Size = new System.Drawing.Size(75, 23);
             this.carParkBtn.TabIndex = 18;
@@ -150,7 +151,7 @@
             // 
             // parkNo
             // 
-            this.parkNo.Location = new System.Drawing.Point(70, 54);
+            this.parkNo.Location = new System.Drawing.Point(70, 19);
             this.parkNo.Name = "parkNo";
             this.parkNo.Size = new System.Drawing.Size(100, 20);
             this.parkNo.TabIndex = 21;
@@ -267,6 +268,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.parkNo);
             this.groupBox1.Controls.Add(this.carParkBtn);
             this.groupBox1.Controls.Add(this.slowBtn);
@@ -282,6 +284,15 @@
             this.groupBox1.TabIndex = 48;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "simulate";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(70, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "From netpie";
             // 
             // park12
             // 
@@ -450,6 +461,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
 

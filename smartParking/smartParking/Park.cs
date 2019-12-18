@@ -95,11 +95,16 @@ namespace SmartParking
             
 
         }
-
+        public void StopCounting()
+        {
+            this.timeCounter.StopCounting();
+            this.counting = false;
+        }
         public void SetReadyState()
         {
             Ready();
             this.timeCounter.StopCounting();
+            this.timeCounter.reset(); //
             this.counting = false;
 
         }
