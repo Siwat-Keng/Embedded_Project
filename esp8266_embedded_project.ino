@@ -9,13 +9,16 @@ const char* password = "Kengfreewifi";
 #define SECRET  "11Oa3xUQHWNiiMJAyTCvmapLc"
 
 #define ALIAS   "NodeMCU1"
-#define TargetWeb "HTML_web"
+#define Target "APP"
 
 #define D6 12   // slot 1
 #define D7 13   // slot 2
 
 WiFiClient client;
 MicroGear microgear(client);
+
+uint32_t timer;
+char msg[2];
 
 void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) 
 {
@@ -57,24 +60,23 @@ void loop() {
     if (microgear.connected())
     {
        microgear.loop();
-       Serial.println("connected");
-
-       char msg[2] = { digitalRead(D6) + '0', digitalRead(D7) + '0' };
-       Serial.println(msg);
-/*
-       float Humidity = dht.readHumidity();
-       float Temp = dht.readTemperature();  // Read temperature as Celsius (the default)
-       String data = "/" + String(Humidity) + "/" + String(Temp);
-
-       data.toCharArray(msg,data.length());
-           
-*/
-       microgear.chat(TargetWeb , msg);
+       
+       if (timer >= 1000){
+          msg[0] = digitalRead(D6) + '0';
+          msg[1] = digitalRead(D7) + '0';
+          Serial.println(msg);
+          microgear.chat(Target , msg);
+          timer = 0;
+       }
+       else timer += 100;
     }
-   else 
-   {
-    Serial.println("connection lost, reconnect...");
-    microgear.connect(APPID);
-   }
+    else{
+       Serial.println("connection lost, reconnect...");  
+       if (timer >= 5000){
+          microgear.connect(APPID);
+          timer = 0;   
+       }
+       else timer += 100;
+    }
     delay(100);
 }
