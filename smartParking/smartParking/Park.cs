@@ -95,7 +95,8 @@ namespace SmartParking
             {
                 Console.Beep(1000, 500);
             }*/
-            Console.Beep(1000, 5000);
+            //Console.Beep(1000, 5000);
+            MessageBox.Show("Wrong");
         }
         public void StartCounting()
         {
@@ -131,7 +132,8 @@ namespace SmartParking
         }
         private void StartBeep()
         {
-            beepCounter.Start();
+            //beepCounter.Start();
+            BeepSound();
         }
         private void BeepCounter_Tick(object sender, EventArgs e)
         {

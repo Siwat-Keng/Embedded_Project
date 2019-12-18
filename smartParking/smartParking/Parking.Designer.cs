@@ -37,6 +37,10 @@
             this.carOutBtn = new System.Windows.Forms.Button();
             this.outNo = new System.Windows.Forms.TextBox();
             this.parkNo = new System.Windows.Forms.TextBox();
+            this.connectStatus = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.park2 = new SmartParking.Park();
             this.park1 = new SmartParking.Park();
             this.SuspendLayout();
@@ -124,6 +128,33 @@
             this.parkNo.Size = new System.Drawing.Size(100, 20);
             this.parkNo.TabIndex = 21;
             // 
+            // connectStatus
+            // 
+            this.connectStatus.AutoSize = true;
+            this.connectStatus.Location = new System.Drawing.Point(741, 428);
+            this.connectStatus.Name = "connectStatus";
+            this.connectStatus.Size = new System.Drawing.Size(47, 13);
+            this.connectStatus.TabIndex = 23;
+            this.connectStatus.Text = "Connect";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(237, 140);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(36, 311);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 25;
+            this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            // 
             // park2
             // 
             this.park2.Location = new System.Drawing.Point(125, 13);
@@ -143,6 +174,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.connectStatus);
             this.Controls.Add(this.parkNo);
             this.Controls.Add(this.outNo);
             this.Controls.Add(this.carOutBtn);
@@ -156,6 +190,7 @@
             this.Controls.Add(this.park1);
             this.Name = "Parking";
             this.Text = "SmartParking";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Parking_FormClosed);
             this.Load += new System.EventHandler(this.Parking_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Parking_MouseClick);
             this.ResumeLayout(false);
@@ -175,6 +210,10 @@
         private System.Windows.Forms.Button carOutBtn;
         private System.Windows.Forms.TextBox outNo;
         private System.Windows.Forms.TextBox parkNo;
+        private System.Windows.Forms.Label connectStatus;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 
