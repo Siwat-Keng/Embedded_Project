@@ -29,8 +29,7 @@ namespace SmartParking
         {
             InitializeComponent();
             this.BackColor = ready; //this.BackColor = SetColorByState(state)
-            this.ForeColor = foreReady;
-            
+            this.ForeColor = foreReady;            
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             

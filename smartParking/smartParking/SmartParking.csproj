@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A5A915F-84DF-4BB5-8AE0-BB50D1DA46BF}</ProjectGuid>
+    <ProjectGuid>{9822F8E4-F298-48FD-875C-03E9B045C14B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SmartParking</RootNamespace>
     <AssemblyName>SmartParking</AssemblyName>
@@ -46,34 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carbutton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Carbutton.Designer.cs">
-      <DependentUpon>Carbutton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Park.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Park.Designer.cs">
       <DependentUpon>Park.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parking.Designer.cs">
+      <DependentUpon>Parking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Carbutton.resx">
-      <DependentUpon>Carbutton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="TimeCounter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TimeCounter.Designer.cs">
+      <DependentUpon>TimeCounter.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Park.resx">
       <DependentUpon>Park.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parking.resx">
+      <DependentUpon>Parking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TimeCounter.resx">
+      <DependentUpon>TimeCounter.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
