@@ -168,13 +168,13 @@ int main(void)
 		sensor_2_time = Slot2();
 
 		if (sensor_1_time <= 2)
-			slots[1] = '1';
-		else
-			slots[1] = '0';
-		if (sensor_2_time <= 2)
 			slots[0] = '1';
 		else
 			slots[0] = '0';
+		if (sensor_2_time <= 2)
+			slots[1] = '1';
+		else
+			slots[1] = '0';
 
 		if (state1 == IN_USE)
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
@@ -196,10 +196,18 @@ int main(void)
 			buf[0] = '0';
 			state1 = WAITING;
 		}
+		else if ('2' == (char) buf[0] && state1 == WAITING){
+			buf[0] = '0';
+			state1 = READY;
+		}
 
 		if ('1' == (char) buf[1] && state2 == READY){
 			buf[1] = '0';
 			state2 = WAITING;
+		}
+		else if ('2' == (char) buf[1] && state2 == WAITING){
+			buf[1] = '0';
+			state2 = READY;
 		}
 		HAL_UART_Transmit(&huart2, slots, 2, 900);
 
@@ -212,14 +220,14 @@ int main(void)
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (state1 == WAITING && slots[1] == '1')
+	if (state1 == WAITING && slots[0] == '1')
 		state1 = IN_USE;
-	if (state2 == WAITING && slots[0] == '1')
+	if (state2 == WAITING && slots[1] == '1')
 		state2 = IN_USE;
 
-	if (state1 == IN_USE && slots[1] == '0')
+	if (state1 == IN_USE && slots[0] == '0')
 		state1 = READY;
-	if (state2 == IN_USE && slots[0] == '0')
+	if (state2 == IN_USE && slots[1] == '0')
 		state2 = READY;
 
   /* USER CODE END 3 */
