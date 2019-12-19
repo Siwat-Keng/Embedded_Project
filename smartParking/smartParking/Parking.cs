@@ -46,11 +46,12 @@ namespace SmartParking
                 
                 parkstate = message;
                 //MessageBox.Show(parkstate);
-                microgear.Chat(Target, "33");
+                
                 this.SetParkedState();
                 
                 //firststate = false;
             }
+            
         }
 
 
@@ -286,6 +287,7 @@ namespace SmartParking
                 if (parkstate[i] == '1')
                 {
                     ParkList[i].SetParkState();
+
                 }
                 else if (parkstate[i] == '0')
                 {
@@ -293,6 +295,18 @@ namespace SmartParking
                     {
                         ParkList[i].SetWaitState();
                         ParkList[i].StopCounting();
+                        if (i == 1)
+                        {
+                            microgear.Chat(Target, "01");
+                        }
+                        else if (i == 0)
+                        {
+                            microgear.Chat(Target, "10");
+                        }
+                        else if (parkstate == "00")
+                        {
+                            microgear.Chat(Target, "11");
+                        }
                     }
                 }
             }
