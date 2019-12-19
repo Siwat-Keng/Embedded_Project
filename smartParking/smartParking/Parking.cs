@@ -393,7 +393,14 @@ namespace SmartParking
             {
                 if (park.GetParkNumber() == outNo.Text.ToString() && park.getState() =="wait") //park.getState() !="ready"
                 {
-                    price = park.GetPrice();
+                    if (park.GetParkNumber() == "1")
+                    {
+                        microgear.Chat(Target, "20");
+                    }else if (park.GetParkNumber() == "2")
+                    {
+                        microgear.Chat(Target, "02");
+                    }
+                        price = park.GetPrice();
                     time = park.GetTime();
                     park.SetReadyState();
                     MessageBox.Show("Park No." + outNo.Text + "\n"
