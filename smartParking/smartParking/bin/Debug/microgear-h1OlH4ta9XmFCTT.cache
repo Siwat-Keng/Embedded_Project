@@ -1,26 +1,15 @@
 {
   "_": {
     "requesttoken": {
-<<<<<<< HEAD
-      "token": "ofvtdbDxaTgtld9h",
-=======
       "token": "Izfkk7MoLKHTbP94",
->>>>>>> 85cb9b624e0d0c33d8414207b08de16c16f11202
       "secret": "null",
       "verifier": "CSP"
     },
     "accesstoken": {
-<<<<<<< HEAD
-      "token": "B9LoXiRoMvqd5vLq",
-      "secret": "sx5NdVEgEteoZYTrkTiNWCFtK1bS5QfU",
-      "endpoint": "pie://gb.netpie.io:1883\",\"flag\":\"S\",\"countdown\":1}",
-      "revokecode": "FowanpAwHF+w_QcDxErRSlApPCI="
-=======
       "token": "pe4bGzpJETBAGTD6",
       "secret": "YFquVvwemDLmRa5ZfpWBrvBpORGwVx4D",
       "endpoint": "pie://gb.netpie.io:1883\",\"flag\":\"S\",\"countdown\":1}",
       "revokecode": "M8BBn8Dt2yQLvElLPwdTtF36Qts="
->>>>>>> 85cb9b624e0d0c33d8414207b08de16c16f11202
     },
     "key": "h1OlH4ta9XmFCTT"
   }
