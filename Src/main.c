@@ -55,7 +55,6 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart2;
-UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 char slots[2] = { '0', '0' };
@@ -70,7 +69,6 @@ static void MX_I2C1_Init(void);
 static void MX_I2S3_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_USART3_UART_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM4_Init(void);
 void MX_USB_HOST_Process(void);
@@ -154,7 +152,6 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_HOST_Init();
   MX_USART2_UART_Init();
-  MX_USART3_UART_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
@@ -171,13 +168,13 @@ int main(void)
 		sensor_2_time = Slot2();
 
 		if (sensor_1_time <= 2)
-			slots[0] = '1';
-		else
-			slots[0] = '0';
-		if (sensor_2_time <= 2)
 			slots[1] = '1';
 		else
 			slots[1] = '0';
+		if (sensor_2_time <= 2)
+			slots[0] = '1';
+		else
+			slots[0] = '0';
 
 		if (state1 == IN_USE)
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
@@ -196,10 +193,12 @@ int main(void)
 		HAL_UART_Receive_IT(&huart2, buf, 2);
 
 		if ('1' == (char) buf[0] && state1 == READY){
+			buf[0] = '0';
 			state1 = WAITING;
 		}
 
 		if ('1' == (char) buf[1] && state2 == READY){
+			buf[1] = '0';
 			state2 = WAITING;
 		}
 		HAL_UART_Transmit(&huart2, slots, 2, 900);
@@ -213,14 +212,14 @@ int main(void)
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (state1 == WAITING && slots[0] == '1')
+	if (state1 == WAITING && slots[1] == '1')
 		state1 = IN_USE;
-	if (state2 == WAITING && slots[1] == '1')
+	if (state2 == WAITING && slots[0] == '1')
 		state2 = IN_USE;
 
-	if (state1 == IN_USE && slots[0] == '0')
+	if (state1 == IN_USE && slots[1] == '0')
 		state1 = READY;
-	if (state2 == IN_USE && slots[1] == '0')
+	if (state2 == IN_USE && slots[0] == '0')
 		state2 = READY;
 
   /* USER CODE END 3 */
@@ -528,39 +527,6 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
-
-}
-
-/**
-  * @brief USART3 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART3_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART3_Init 0 */
-
-  /* USER CODE END USART3_Init 0 */
-
-  /* USER CODE BEGIN USART3_Init 1 */
-
-  /* USER CODE END USART3_Init 1 */
-  huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
-  huart3.Init.WordLength = UART_WORDLENGTH_8B;
-  huart3.Init.StopBits = UART_STOPBITS_1;
-  huart3.Init.Parity = UART_PARITY_NONE;
-  huart3.Init.Mode = UART_MODE_TX_RX;
-  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART3_Init 2 */
-
-  /* USER CODE END USART3_Init 2 */
 
 }
 
