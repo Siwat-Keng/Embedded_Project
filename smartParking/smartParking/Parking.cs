@@ -32,82 +32,46 @@ namespace SmartParking
         {
             if (connectStatus.Text == "Disconnect")
             {
-                //Console.WriteLine("Connecting");
                 MessageBox.Show("Connecting");
             }
         }
         public void Message(string topic,string message)
         {
-            
             if (connectStatus.Text == "Connected")
             {
-                //Console.WriteLine(topic+" "+message);
-                //textBox1.Invoke(new Action(() => textBox1.AppendText(message + Environment.NewLine)));
-                
                 parkstate = message;
-                //MessageBox.Show(parkstate);
-                
                 this.SetParkedState();
-                
-                //firststate = false;
             }
-            
         }
-
-
-
-        //ครั้งแรก setparkstate รับ ครั้ง 2 ต้องตรวจว่าไปจอดตรงไหน จอดถูกกฎมั้ย
         public void Present(string token)
-
         {
-
             if (connectStatus.Text == "Connected")
-
             {
-
-                //Console.WriteLine(token);
                 MessageBox.Show(token);
             }
-
         }
         public void Absent(string token)
-
         {
-
             if (connectStatus.Text == "Connected")
-
             {
-
-                //Console.WriteLine(token);
                 MessageBox.Show(token);
             }
 
         }
         public void Error(string error)
-
         {
 
             if (connectStatus.Text == "Connected")
-
             {
-
-                //Console.WriteLine(error);
                 MessageBox.Show(error);
             }
-
         }
         public void Info(string info)
-
         {
-
             if (connectStatus.Text == "Connected")
-
             {
-
-                //Console.WriteLine(info);
                 MessageBox.Show(info);
             }
-
         }
         public void Connect2Netpie()
         {
@@ -143,145 +107,22 @@ namespace SmartParking
             microgear.SetAlias(Alias);
             microgear.Subscribe(Topic);
             microgear.onAbsent += Absent;
-
-
-            //textBox2.Text = "11101";
-            
             Connect2Netpie();
-            /*
-            ParkList.Add(park1);
-            ParkList.Add(park2);
-            ParkList.Add(park3);
-            ParkList.Add(park4);
-            ParkList.Add(park5);*/
             foreach(Park park in this.Controls.OfType<Park>())
             {
                 ParkList.Add(park);
             }
-
             ParkList.Reverse();
 
             for (int i = 1; i < ParkList.Count+1; i++)
             {
                 ParkList[i - 1].SetParkNumber(i.ToString());
             }
-            
-            //SetParkedState();
-
-            //MessageBox.Show(ParkList[1].getState());
-
         }
 
 
-        private void SetParkedState()//แก้ให้รับจาก parkstate
+        private void SetParkedState()
         {
-            /*
-            if (firststate)
-            {
-                for (int i = 0; i < textBox2.Text.Length; i++)
-                {
-                    
-                    if (textBox2.Text[i] == '0')
-                    {
-
-                        ParkList[i].Ready();
-                    }
-                    else if (textBox2.Text[i] == '1')
-                    {
-                        ParkList[i].Parked();
-                        ParkList[i].StartCounting();
-                    }
-                }
-                firststate = false;
-            }
-            else
-            {
-                for (int i = 0; i < textBox2.TextLength; i++)
-                {
-                    if (textBox2.Text[i] == '0')
-                    {
-
-                        ParkList[i].SetReadyState();
-                    }
-                    else if (textBox2.Text[i] == '1')
-                    {
-                        ParkList[i].SetParkState();
-                    }
-                }
-            }*/
-            /*
-            if (firststate)
-            {
-                for (int i = 0; i < parkstate.Length; i++)
-                {
-                    
-                    if (parkstate[i] == '0' && ParkList[i].getState()!="wait")
-                    {
-
-                        ParkList[i].Ready();
-                    }
-                    else if (parkstate[i] == '1')
-                    {
-                        ParkList[i].SetParkState(); //Parked();
-                        
-                    }
-                }
-                firststate = false;
-
-
-            }
-            else
-            {
-                for (int i = 0; i < parkstate.Length; i++)
-                {
-                    
-                    if (parkstate[i] == '0' && ParkList[i].getState() != "wait")
-                    {
-
-                        ParkList[i].SetReadyState();
-                    }
-                    else if (parkstate[i] == '1')
-                    {
-                        ParkList[i].SetParkState();
-                        
-                    }
-                }
-            }*/
-            /*
-            for (int i = 0; i < 2; i++)
-            {
-                //MessageBox.Show(i.ToString());
-                if (parkstate[i] == '1')
-                {
-                    k=i+1;
-                    
-                }
-            }
-
-            
-            //MessageBox.Show(ParkList[k].GetParkNumber());
-            /*
-            foreach (var park in ParkList)
-            {
-                if (park.GetParkNumber() == k.ToString())
-                {
-                    park.SetParkState();
-                    break;
-                }
-            }*/
-            /*
-            ParkList[k].StartCounting();
-            ParkList[k].Parked();*/
-            /*
-            foreach (var park in ParkList)
-            {
-                if (park.GetParkNumber() == k.ToString())
-                {
-                    park.SetParkState();
-
-                }
-            }*/
-
             for (int i = 0; i < parkstate.Length; i++)
             {
                 if (parkstate[i] == '1')
@@ -310,11 +151,6 @@ namespace SmartParking
                     }
                 }
             }
-            /*if (ParkList[i].getState() != "wait")
-                    {
-                        ParkList[i].SetReadyState();
-                    }*/
-
         }
         private void Parking_MouseClick(object sender, MouseEventArgs e)
         {
@@ -354,18 +190,15 @@ namespace SmartParking
                 {
                     park.SetWaitState();
                     MessageBox.Show("Go to park no. "+park.GetParkNumber(),"Nearest park");
-                    //microgear.Chat(Target, park.GetParkNumber());
-                    /*string binary = Convert.ToString(Convert.ToInt32(park.GetParkNumber()), 2);
-                    microgear.Chat(Target, binary);*/
-            //MessageBox.Show(binary);
+                    
 
             if (park.GetParkNumber() == "1")
                     {
-                        //MessageBox.Show("10");
+                        
                         microgear.Chat(Target, "10");
                     }else if (park.GetParkNumber() == "2")
                     {
-                        //MessageBox.Show("01");
+                        
                         microgear.Chat(Target, "01");
                     }
                     Thread.Sleep(100);
@@ -416,7 +249,7 @@ namespace SmartParking
 
         private void Parking_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Environment.Exit(0);
+            Environment.Exit(0);//เมื่อปิดไปแล้วโปรแกรมยังคงทำงานอยู่ใน task จึงต้องมี event นี้
         }
 
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
