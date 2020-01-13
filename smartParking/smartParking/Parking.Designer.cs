@@ -32,10 +32,8 @@
             this.spdBtn = new System.Windows.Forms.Button();
             this.rate = new System.Windows.Forms.Label();
             this.carInBtn = new System.Windows.Forms.Button();
-            this.carParkBtn = new System.Windows.Forms.Button();
             this.carOutBtn = new System.Windows.Forms.Button();
             this.outNo = new System.Windows.Forms.TextBox();
-            this.parkNo = new System.Windows.Forms.TextBox();
             this.connectStatus = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -50,7 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.park12 = new SmartParking.Park();
             this.park11 = new SmartParking.Park();
             this.park10 = new SmartParking.Park();
@@ -101,7 +98,7 @@
             this.rate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rate.AutoSize = true;
             this.rate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.rate.Location = new System.Drawing.Point(111, 113);
+            this.rate.Location = new System.Drawing.Point(122, 113);
             this.rate.Name = "rate";
             this.rate.Size = new System.Drawing.Size(28, 17);
             this.rate.TabIndex = 16;
@@ -119,16 +116,6 @@
             this.carInBtn.Text = "CarIn";
             this.carInBtn.UseVisualStyleBackColor = true;
             this.carInBtn.Click += new System.EventHandler(this.CarInBtn_Click);
-            // 
-            // carParkBtn
-            // 
-            this.carParkBtn.Location = new System.Drawing.Point(176, 19);
-            this.carParkBtn.Name = "carParkBtn";
-            this.carParkBtn.Size = new System.Drawing.Size(75, 23);
-            this.carParkBtn.TabIndex = 18;
-            this.carParkBtn.Text = "CarPark";
-            this.carParkBtn.UseVisualStyleBackColor = true;
-            this.carParkBtn.Click += new System.EventHandler(this.CarParkBtn_Click);
             // 
             // carOutBtn
             // 
@@ -149,13 +136,6 @@
             this.outNo.Size = new System.Drawing.Size(100, 20);
             this.outNo.TabIndex = 20;
             // 
-            // parkNo
-            // 
-            this.parkNo.Location = new System.Drawing.Point(70, 19);
-            this.parkNo.Name = "parkNo";
-            this.parkNo.Size = new System.Drawing.Size(100, 20);
-            this.parkNo.TabIndex = 21;
-            // 
             // connectStatus
             // 
             this.connectStatus.AutoSize = true;
@@ -168,16 +148,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 83);
+            this.textBox1.Location = new System.Drawing.Point(30, 45);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(120, 23);
             this.textBox1.TabIndex = 30;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_KeyPress);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(176, 83);
+            this.button3.Location = new System.Drawing.Point(156, 38);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(95, 44);
             this.button3.TabIndex = 31;
             this.button3.Text = "Send";
             this.button3.UseVisualStyleBackColor = true;
@@ -186,11 +167,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 86);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(144, 17);
             this.label1.TabIndex = 33;
-            this.label1.Text = "Message :";
+            this.label1.Text = "Receieved message :";
             // 
             // pictureBox6
             // 
@@ -268,31 +250,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.parkNo);
-            this.groupBox1.Controls.Add(this.carParkBtn);
             this.groupBox1.Controls.Add(this.slowBtn);
             this.groupBox1.Controls.Add(this.spdBtn);
             this.groupBox1.Controls.Add(this.rate);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.groupBox1.Location = new System.Drawing.Point(525, 413);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(278, 155);
             this.groupBox1.TabIndex = 48;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "simulate";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 34;
-            this.label4.Text = "From netpie";
             // 
             // park12
             // 
@@ -433,10 +403,8 @@
         private System.Windows.Forms.Button spdBtn;
         private System.Windows.Forms.Label rate;
         private System.Windows.Forms.Button carInBtn;
-        private System.Windows.Forms.Button carParkBtn;
         private System.Windows.Forms.Button carOutBtn;
         private System.Windows.Forms.TextBox outNo;
-        private System.Windows.Forms.TextBox parkNo;
         private System.Windows.Forms.Label connectStatus;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private Park park3;
@@ -461,7 +429,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
     }
 }
 

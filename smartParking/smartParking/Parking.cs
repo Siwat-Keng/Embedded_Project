@@ -204,16 +204,7 @@ namespace SmartParking
             }
         }
 
-        private void CarParkBtn_Click(object sender, EventArgs e)
-        {
-            foreach (var park in ParkList)
-            {
-                if (park.GetParkNumber() == parkNo.Text.ToString())
-                {
-                    park.SetParkState();
-                }
-            }
-        }
+        
 
         private void CarOutBtn_Click(object sender, EventArgs e)
         {
@@ -255,6 +246,13 @@ namespace SmartParking
         private void Button3_Click(object sender, EventArgs e)
         {
             microgear.Chat(Alias, textBox1.Text);
+            textBox1.Text = "";
+        }
+
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var validKeys = new[] { Keys.Back, Keys.D0, Keys.D1 };
+            e.Handled = !validKeys.Contains((Keys)e.KeyChar);
         }
     }
 }
