@@ -111,9 +111,9 @@
             this.carInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.carInBtn.Location = new System.Drawing.Point(548, 126);
             this.carInBtn.Name = "carInBtn";
-            this.carInBtn.Size = new System.Drawing.Size(75, 36);
+            this.carInBtn.Size = new System.Drawing.Size(81, 36);
             this.carInBtn.TabIndex = 17;
-            this.carInBtn.Text = "CarIn";
+            this.carInBtn.Text = "Car In";
             this.carInBtn.UseVisualStyleBackColor = true;
             this.carInBtn.Click += new System.EventHandler(this.CarInBtn_Click);
             // 
@@ -123,9 +123,9 @@
             this.carOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.carOutBtn.Location = new System.Drawing.Point(631, 359);
             this.carOutBtn.Name = "carOutBtn";
-            this.carOutBtn.Size = new System.Drawing.Size(92, 36);
+            this.carOutBtn.Size = new System.Drawing.Size(98, 36);
             this.carOutBtn.TabIndex = 19;
-            this.carOutBtn.Text = "CarOut";
+            this.carOutBtn.Text = "Car Out";
             this.carOutBtn.UseVisualStyleBackColor = true;
             this.carOutBtn.Click += new System.EventHandler(this.CarOutBtn_Click);
             // 
