@@ -1,0 +1,16 @@
+{
+  "_": {
+    "requesttoken": {
+      "token": "bIBxNJMeNcUrk2IR",
+      "secret": "null",
+      "verifier": "CSP"
+    },
+    "accesstoken": {
+      "token": "Jam9g0rjH5P0wbTK",
+      "secret": "6KHJxRqhl2MEkewNe0z8LfG0INgfoEjH",
+      "endpoint": "pie://gb.netpie.io:1883\",\"flag\":\"P",
+      "revokecode": "6lj+4JiHfOvoywaZlZ1o3QkWGt0="
+    },
+    "key": "caukO0rlfNLCCCV"
+  }
+}

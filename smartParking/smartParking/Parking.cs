@@ -15,17 +15,13 @@ namespace SmartParking
     {
         private List<Park> ParkList = new List<Park>();
         private string AppID = "esp8266Project";
-        private string Key = "h1OlH4ta9XmFCTT";
-        private string Secret = "N1Id6zGyMpyCYrunX6Z6e0Nn2";
-
+        private string Key = "caukO0rlfNLCCCV"; //"h1OlH4ta9XmFCTT"
+        private string Secret = "wdB2DjD7sUDN2k2fYAPUjqvHT"; //"N1Id6zGyMpyCYrunX6Z6e0Nn2";
         private string Alias = "VisualStudio";
         private string Target = "NodeMCU1";
         private string Topic = "/topic";
         private string parkstate= "10";
-        private Boolean firststate = true;
         public Microgear microgear;
-
-        private int k;
         private string time;
         private string price;
         public void Connect()
@@ -252,10 +248,7 @@ namespace SmartParking
             Environment.Exit(0);//เมื่อปิดไปแล้วโปรแกรมยังคงทำงานอยู่ใน task จึงต้องมี event นี้
         }
 
-        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
+        
 
         
 
